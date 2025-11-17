@@ -20,7 +20,18 @@ class Article:
         
 class Author:
     def __init__(self, name):
-        self.name = name
+        if not isinstance(name, str):
+            raise ValueError("Name must be a string")
+        object.__setattr__(self, '_name', name)
+
+    @property
+    def name(self):
+        return self._name
+
+    def __setattr__(self, name, value):
+        if name == 'name':
+            return  # Ignore attempts to set name
+        super().__setattr__(name, value)
 
     def articles(self):
         pass
