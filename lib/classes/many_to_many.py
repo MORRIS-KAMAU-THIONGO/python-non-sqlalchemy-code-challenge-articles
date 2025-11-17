@@ -34,7 +34,7 @@ class Author:
         super().__setattr__(name, value)
 
     def articles(self):
-        pass
+        return [article for article in Article.all if article.author == self]
 
     def magazines(self):
         pass
