@@ -1,10 +1,13 @@
 class Article:
+    all = []
+
     def __init__(self, author, magazine, title):
         if not isinstance(title, str):
             raise ValueError("Title must be a string")
         object.__setattr__(self, '_title', title)
         self.author = author
         self.magazine = magazine
+        Article.all.append(self)
 
     @property
     def title(self):
