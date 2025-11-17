@@ -1,9 +1,19 @@
 class Article:
     def __init__(self, author, magazine, title):
-       
+        if not isinstance(title, str):
+            raise ValueError("Title must be a string")
+        object.__setattr__(self, '_title', title)
         self.author = author
         self.magazine = magazine
-        self.title = title
+
+    @property
+    def title(self):
+        return self._title
+
+    def __setattr__(self, name, value):
+        if name == 'title':
+            return  # Ignore attempts to set title
+        super().__setattr__(name, value)
         
 class Author:
     def __init__(self, name):
