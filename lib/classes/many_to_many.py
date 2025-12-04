@@ -26,6 +26,7 @@ class Author:
 
     @property
     def name(self):
+        
         return self._name
 
     def __setattr__(self, name, value):
